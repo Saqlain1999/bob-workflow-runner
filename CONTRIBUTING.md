@@ -18,6 +18,6 @@ Keep example tasks small and synthetic. Never submit keys, authentication files,
 - Avoid adding settings writers, hooks, provider adapters, or automatic retry loops without a reviewed scope and acceptance cases.
 - Do not label a fixture definition as a passing test or a documentation review as a Bob integration test.
 
-The first executable contribution should be a separate, reviewed change implementing the offline contract validator and state transitions. A Bob adapter should wait until local supervisor and state-integrity requirements have been exercised.
+Complete the [build-versus-adopt decision](ROADMAP.md) before executable work. If a separate controller is justified, its first executable contribution should be a reviewed change implementing the offline contract validator and state transitions. A Bob adapter should wait until local supervisor and state-integrity requirements have been exercised.
 
 By submitting original work, you agree to its inclusion under the repository's MIT license. Linked third-party material is referenced, not relicensed.

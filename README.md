@@ -20,11 +20,21 @@ The central proposed rule is straightforward: a successful agent session and a p
 
 Start with the architecture, then trace one task through the state table. Review the example contract as a proposal; no application here consumes it.
 
+## Before implementation: build or adopt
+
+Existing tools already provide much of the proposed shape. Bob's [native session commands](https://bob.ibm.com/docs/shell/features/slash-commands), [rollback](https://bob.ibm.com/docs/ide/features/rollback), and [documented workflows and subagents](https://bob.ibm.com/blog/bob-v2-release-announcement/) should be the first comparison. [Bob Control](https://github.com/PounceAI/bob-control/blob/315cbf54076842f06462ea8846aae837594c67cd/README.md) already has an MCP server, CLI, worker, task state, and checkpoint recovery. [Bob+ Headless Bob](https://github.com/ibm-self-serve-assets/building-blocks/blob/5c610971dc72f9e9035821b3cb2c3edea868f8b4/ai/engineering/headless-bob/assets/headlessbob/README.md) supplies a service runtime with persistent run state, cancellation, and limits. IBM's workshop also includes a [Plan–Act–Evaluate example](https://github.com/IBM/intro-bob-workshop/blob/352cdb45d8ad2a53b27aaa31a9248edf3bc8f2fe/.bob/skills/agent-with-bob-shell/SKILL.md).
+
+These references were reviewed as documentation and source on **10 October 2026**; they were not executed in this comparison. They are adoption candidates, not compatibility endorsements. Their invocation, permission, version, and workspace assumptions require review before use.
+
+Before accepting an executable implementation here, complete the [build-versus-adopt gate](ROADMAP.md#1-build-versus-adopt-decision). Identify a specific unmet scenario, compare native Bob and Bob Control, and evaluate a relevant existing runtime where authorized. Prefer documentation, an upstream contribution, or a narrow adapter when that solves the problem. A separate controller needs evidence of a remaining gap and a bounded acceptance case; a generic agent loop is insufficient justification.
+
+The kit's [alternatives and coexistence guide](https://github.com/Saqlain1999/bob-workflow-kit/blob/main/docs/alternatives.md) also covers Spec Kit, repository context, onboarding, and debugging tools. This repository makes no uniqueness or performance claim for its proposed design.
+
 ## Proposed shape
 
 The controller would validate a task contract, capture a baseline, request a bounded plan, run one authorized implementation stage, and independently supervise repository checks. A failed relevant check could permit a bounded repair attempt. A changed candidate would invalidate earlier verification.
 
-The first implementation should support one task and one isolated workspace at a time. Repository commands must come from a reviewed project profile. This avoids treating `npm test`, `pytest`, or another conventional command as a universal definition of correctness.
+If a separate implementation is justified, its first version should support one task and one isolated workspace at a time. Repository commands must come from a reviewed project profile. This avoids treating `npm test`, `pytest`, or another conventional command as a universal definition of correctness.
 
 IBM documents that `bob run` pre-approves tool calls. The proposed adapter must consequently obtain applicable authorization before launching a session and qualify the restrictions it relies on. See the [primary source and capability notes](docs/sources.md); this preview does not change Bob's approval settings.
 
