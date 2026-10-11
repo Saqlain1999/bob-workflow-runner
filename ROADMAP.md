@@ -10,14 +10,16 @@ The architecture, transitions, example contract, source notes, and evaluation cr
 
 Complete this review before accepting executable implementation work. Start with the user's concrete missing behavior, then compare the simplest existing approaches:
 
-| Candidate | What to assess | Source reviewed on 10 October 2026 |
+| Candidate | What to assess | Source reviewed on 11 October 2026 |
 | --- | --- | --- |
-| Native Bob | Whether task history/resume, context management, subagents, and available workflows already address the need; distinguish conversation continuation from file restoration and fresh-session handoff. | [Shell commands](https://bob.ibm.com/docs/shell/features/slash-commands), [IDE context](https://bob.ibm.com/docs/ide/core-concepts/context-window-management), [v2 workflows](https://bob.ibm.com/blog/bob-v2-release-announcement/) |
+| Native Bob | Whether task history/resume, ACP task sharing with connected editors, context management, subagents, and available workflows already address the need; distinguish conversation continuation from file restoration, fresh-session handoff, shared work records, and current verification. | [Shell commands](https://bob.ibm.com/docs/shell/features/slash-commands), [Shell 2.0.5 changelog](https://bob.ibm.com/docs/shell/changelog#205), [IDE context](https://bob.ibm.com/docs/ide/core-concepts/context-window-management), [v2 workflows](https://bob.ibm.com/blog/bob-v2-release-announcement/) |
 | Bob Control | Existing task state, worker, dependencies, checkpoints, attempts, and verification behavior; identify any required behavior missing from the applicable version/configuration. | [README](https://github.com/PounceAI/bob-control/blob/315cbf54076842f06462ea8846aae837594c67cd/README.md), [checkpoint implementation](https://github.com/PounceAI/bob-control/blob/315cbf54076842f06462ea8846aae837594c67cd/src/checkpoint.ts), [judge implementation](https://github.com/PounceAI/bob-control/blob/315cbf54076842f06462ea8846aae837594c67cd/src/judge.ts) |
 | Bob+ Headless Bob | Existing service interfaces, persistent runs, cancellation, queues, and limits when the use case requires remote or application-driven task execution. | [Runtime README](https://github.com/ibm-self-serve-assets/building-blocks/blob/5c610971dc72f9e9035821b3cb2c3edea868f8b4/ai/engineering/headless-bob/assets/headlessbob/README.md) |
 | IBM workshop agent example | Whether its existing Plan–Act–Evaluate example is enough for an educational or small workflow use case. Review current client semantics before reusing its examples. | [Skill source](https://github.com/IBM/intro-bob-workshop/blob/352cdb45d8ad2a53b27aaa31a9248edf3bc8f2fe/.bob/skills/agent-with-bob-shell/SKILL.md) |
 
 The source review above is complete; runtime comparison and the adoption decision are **not complete**. At minimum, the decision must cover native Bob and Bob Control. Include other candidates when their interfaces match the need. Keep the comparison proportionate to the proposed change.
+
+For a cross-editor handoff scenario, evaluate native ACP task sharing before proposing another persistence layer. The documentation establishes that continuity is available; it does not show whether an old check still applies after source or requirements change, provide a controller-owned contract, or replace an independently inspected shared task board.
 
 Record the required scenario, candidate revision/client version, configuration, prerequisites, applicable authorization, and the observed outcome. Distinguish documentation review, local fixture execution, and live Bob execution. An unexecuted candidate is unresolved rather than a demonstrated failure. Any live trial needs an authorized disposable workspace and explicit resource limits.
 

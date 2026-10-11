@@ -1,6 +1,6 @@
 # Source notes
 
-Primary references checked **2026-10-09**. These are documentation observations, not live compatibility tests. All controller requirements elsewhere in this repository are this project's proposals.
+Primary references checked **2026-10-11**. These are documentation observations, not live compatibility tests. All controller requirements elsewhere in this repository are this project's proposals. IBM's cited changelog identifies versions but does not show release dates, so the date here records this review rather than a vendor release date.
 
 | IBM reference | Documented capability relevant to the design |
 | --- | --- |
@@ -8,7 +8,7 @@ Primary references checked **2026-10-09**. These are documentation observations,
 | [Tool groups](https://bob.ibm.com/docs/shell/core-concepts/tools) | Named tool groups can be disabled. The documented table includes editing in Plan and Ask modes; a mode label therefore cannot establish this project's restriction profile. |
 | [Approval settings](https://bob.ibm.com/docs/shell/configuration/approval-settings) | Documents group approvals and command-prefix approval/denial settings. This preview does not edit them or assume that interactive prompting applies to a noninteractive run. |
 | [Lifecycle hooks](https://bob.ibm.com/docs/shell/configuration/lifecycle-hooks) | `PostToolUse` and `Stop` cannot block and ignore stdout. Hooks run without sandbox isolation. A stop hook is not a verification-and-repair controller. |
-| [Shell changelog](https://bob.ibm.com/docs/shell/changelog) | Records a correction to `--disable-mcp` behavior and support for background processes. Client-version qualification and descendant cleanup need explicit evidence. |
+| [Shell changelog](https://bob.ibm.com/docs/shell/changelog#205) | The current 2.0.5 section documents task sharing between Bob Shell running as an ACP agent and connected editors. This is a native cross-editor continuity candidate, not evidence of an external shared board, a controller-owned contract, or current verification. Earlier entries record a correction to `--disable-mcp` behavior and support for background processes. Client-version qualification and descendant cleanup still need explicit evidence. |
 
 ## Interpretation limits
 
