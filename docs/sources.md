@@ -1,6 +1,6 @@
 # Source notes
 
-Primary references checked **2026-10-09**. These are documentation observations, not live compatibility tests. All controller requirements elsewhere in this repository are this project's proposals.
+Primary references checked **2026-10-13**. These are documentation observations, not live compatibility tests. All controller requirements elsewhere in this repository are this project's proposals. IBM's cited changelog identifies versions but does not show release dates, so the date here records this review rather than a vendor release date.
 
 | IBM reference | Documented capability relevant to the design |
 | --- | --- |
@@ -8,7 +8,8 @@ Primary references checked **2026-10-09**. These are documentation observations,
 | [Tool groups](https://bob.ibm.com/docs/shell/core-concepts/tools) | Named tool groups can be disabled. The documented table includes editing in Plan and Ask modes; a mode label therefore cannot establish this project's restriction profile. |
 | [Approval settings](https://bob.ibm.com/docs/shell/configuration/approval-settings) | Documents group approvals and command-prefix approval/denial settings. This preview does not edit them or assume that interactive prompting applies to a noninteractive run. |
 | [Lifecycle hooks](https://bob.ibm.com/docs/shell/configuration/lifecycle-hooks) | `PostToolUse` and `Stop` cannot block and ignore stdout. Hooks run without sandbox isolation. A stop hook is not a verification-and-repair controller. |
-| [Shell changelog](https://bob.ibm.com/docs/shell/changelog) | Records a correction to `--disable-mcp` behavior and support for background processes. Client-version qualification and descendant cleanup need explicit evidence. |
+| [Shell 2.0.6 changelog](https://bob.ibm.com/docs/shell/changelog#206) and [2.0.5 changelog](https://bob.ibm.com/docs/shell/changelog#205) | Version 2.0.5 documents task sharing between Bob Shell running as an ACP agent and connected editors. Version 2.0.6 documents an ACP `session/new` metadata field for selecting the initial mode. These are native adoption candidates, not evidence of an external shared board, a controller-owned contract, or current verification. The same page records fixes and limits that require client-version qualification; it does not publish release dates. |
+| [ACP integration](https://bob.ibm.com/docs/shell/features/acp) | Lists Zed, IntelliJ IDEA, Neovim, and Xcode; assigns the thread UI, permission dialogs, and diffs to the editor while Bob owns its runtime; requires workspace trust; and warns that editor/Bob MCP definitions can duplicate servers. Bob commands run in Bob's child-process environment, which can differ from the editor terminal. These documented semantics belong in an adoption trial; they are not live handoff evidence. |
 
 ## Interpretation limits
 
